@@ -48,12 +48,12 @@ st.subheader('Добавление данных в сервис')
 #добавляем ключевые слова в фильтр Блума
 add_word_key = st.text_input("Введите ключевое слово из вашего набора данных")
 key_word_array.append(add_word_key)
-st.success("Ключевое слово " + key_word_array + " добавлено!")
+st.success("Ключевое слово ", key_word_array," добавлено!")
 
 #добавляем описание в список описаний
 add_description = st.text_input("Введите краткое описание вашего набора данных")
 description_array.append(add_description)
-st.success("Описание: " + key_word_array + ". Добавлено!")
+st.success("Описание: ", add_description, ". Добавлено!")
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
