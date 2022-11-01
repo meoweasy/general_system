@@ -46,14 +46,20 @@ filename_array = ["healthcare-dataset-stroke-data.csv"]
 st.subheader('Добавление данных в сервис')
 
 #добавляем ключевые слова в фильтр Блума
+def add_key(key):
+    key_word_array.append(key)
+    st.success("Ключевое слово добавлено!")
+
 add_word_key = st.text_input("Введите ключевое слово из вашего набора данных")
-key_word_array.append(add_word_key)
-st.success("Ключевое слово добавлено!")
+add_key(add_word_key)
 
 #добавляем описание в список описаний
+def add_desc(desc):
+    description_array.append(desc)
+    st.success("Описание добавлено!")
+
 add_description = st.text_input("Введите краткое описание вашего набора данных")
-description_array.append(add_description)
-st.success("Описание добавлено!")
+add_desc(add_description)
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
