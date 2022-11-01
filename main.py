@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import math
-from bitarray import bitarray
+import bitarray
 import os.path
 
 #фильтр Блума
