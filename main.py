@@ -47,15 +47,25 @@ st.subheader('Добавление данных в сервис')
 
 #добавляем ключевые слова в фильтр Блума
 add_word_key = st.text_input("Введите ключевое слово из вашего набора данных")
-key_word_array.append(add_word_key)
-if add_word_key:
-    st.success("Ключевое слово добавлено!")
+def add_key():
+    if add_word_key:
+        if add_word_key in key_word_array:
+            st.error("Такое ключевое слово уже есть! P.S. Ничего страшного, придумайте еще слово, которое отображает именно ваши данные. Либо просто не добавляйте ключевое слово, ваши данные все равно найдутся!")
+        else:
+            key_word_array.append(add_word_key)
+            st.success("Ключевое слово добавлено!")
 
 #добавляем описание в список описаний
 add_description = st.text_input("Введите краткое описание вашего набора данных")
 description_array.append(add_description)
-if add_description:
-    st.success("Описание добавлено!")
+def add_desk():
+    if add_description:
+        if add_description in description_array:
+            st.error(
+                "Такое описание уже есть! P.S Такого быть не должно, так как описание данных у всех различное!")
+        else:
+            key_word_array.append(add_word_key)
+            st.success("Описание добавлено!")
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
@@ -65,10 +75,19 @@ def save_uploaded_file(uploadedfile):
 
 #Drag-and-Drop
 add_csv_file = st.file_uploader("Добавьте csv файл")
-if add_csv_file is not None:
-    file_details = {"FileName":add_csv_file.name,"FileType":add_csv_file.type}
-    save_uploaded_file(add_csv_file)
-    filename_array.append(add_csv_file.name)
+def add_csv():
+    if add_csv_file is not None:
+        file_details = {"FileName":add_csv_file.name,"FileType":add_csv_file.type}
+        save_uploaded_file(add_csv_file)
+        filename_array.append(add_csv_file.name)
+
+if st.button('Добавить данные'):
+    if add_description and add_csv_file is not None:
+        add_desk()
+        add_csv()
+    else:
+        st.error("Какие-то данные не введены!")
+
 
 st.subheader('Поиск данных')
 bloom_filter = BloomFilter(200, 100)
