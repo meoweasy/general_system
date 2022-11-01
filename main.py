@@ -69,7 +69,7 @@ def add_desk():
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
-  with open(os.path.join("/general_system/", uploadedfile.name), "wb") as f:
+  with open(os.path.join("meoweasy/general_system/master/", uploadedfile.name), "wb") as f:
      f.write(uploadedfile.getbuffer())
   return st.success("Файл сохранен!")
 
