@@ -69,9 +69,9 @@ def add_desk():
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
-  with open(os.path.join("D:/general_system/", uploadedfile.name), "wb") as f:
+  with open(os.path.join("meoweasy/general_system/", uploadedfile.name), "wb") as f:
      f.write(uploadedfile.getbuffer())
-  return st.success("Saved file :{} in D:/general_system/".format(uploadedfile.name))
+  return st.success("Saved file :{} in meoweasy/general_system/".format(uploadedfile.name))
 
 #Drag-and-Drop
 add_csv_file = st.file_uploader("Добавьте csv файл")
