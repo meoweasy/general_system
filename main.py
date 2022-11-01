@@ -105,3 +105,9 @@ if search_word_key:
                 st.write(pd.read_csv(filename_array[i]))
     else:
         st.write("Данные по ключевому слову ", search_word_key, " не найдены.")
+
+
+st.subheader('Информационный блок')
+st.write(key_word_array)
+st.write(description_array)
+st.write(filename_array)
