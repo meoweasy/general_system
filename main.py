@@ -69,9 +69,9 @@ def add_desk():
 
 #метод сохранения файлика в проекте
 def save_uploaded_file(uploadedfile):
-  with open(os.path.join("", uploadedfile.name), "wb") as f:
+  with open(os.path.join("/app/general_system/", uploadedfile.name), "wb") as f:
      f.write(uploadedfile.getbuffer())
-  return st.success("Saved file :".format(uploadedfile.name))
+  return st.success("Файл сохранен!")
 
 #Drag-and-Drop
 add_csv_file = st.file_uploader("Добавьте csv файл")
