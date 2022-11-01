@@ -48,7 +48,8 @@ st.subheader('Добавление данных в сервис')
 #добавляем ключевые слова в фильтр Блума
 add_word_key = st.text_input("Введите ключевое слово из вашего набора данных")
 key_word_array.append(add_word_key)
-st.success("Ключевое слово добавлено!")
+if add_word_key:
+    st.success("Ключевое слово добавлено!")
 
 #добавляем описание в список описаний
 add_description = st.text_input("Введите краткое описание вашего набора данных")
@@ -77,11 +78,11 @@ for i in range(len(key_word_array)):
 
 #поиск данных по ключевому слову
 search_word_key = st.text_input("Введите ключевое слово")
-
-if not bloom_filter.check_is_not_in_filter(search_word_key):
-    st.write("Данные по ключевому слову ", search_word_key, " найдены.")
-    for i in range(len(description_array)):
-        if search_word_key.lower() in description_array[i].lower():
-            st.write(pd.read_csv(filename_array[i]))
-else:
-    st.write("Данные по ключевому слову ", search_word_key, " не найдены.")
+if search_word_key:
+    if not bloom_filter.check_is_not_in_filter(search_word_key):
+        st.write("Данные по ключевому слову ", search_word_key, " найдены.")
+        for i in range(len(description_array)):
+            if search_word_key.lower() in description_array[i].lower():
+                st.write(pd.read_csv(filename_array[i]))
+    else:
+        st.write("Данные по ключевому слову ", search_word_key, " не найдены.")
